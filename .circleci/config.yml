@@ -1,0 +1,1684 @@
+version: 2.1
+
+jobs:
+  Revoke-WSConst:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Give me the raw events
+          command: |
+            mkdir -p /tmp/pool-C
+            set +o pipefail 2>/dev/null; a() { echo "stage1"; seq 1 $1 ; }; b() { echo "stage2"; sha1sum < <(seq 1 $1) ; }; { a 722255; b 722255; } > /tmp/pool-C/south.atom.asset; true
+            wc -c /tmp/pool-C/south.atom.asset
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'south.atom.asset'
+  depoly-50:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/south.atom.asset ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  oscarBox:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Please do block the mail relay
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; grep -Hv -m4 if /etc/profile | nl; true ; } > /tmp/pool-C/R4hnL797s
+            wc -c /tmp/pool-C/R4hnL797s
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'R4hnL797s'
+  VerifyPipeline:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/ba7dfc31-2d76-fc7a-15fd-bee7fdcb3e ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  u-dark:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Onboard the access cards as usual
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; awk -F ":" 'length($1) > 5 { print NR": "$1 }' /etc/passwd | sort -k2 -n; true ; } > /tmp/pool-C/v7.13.36
+            wc -c /tmp/pool-C/v7.13.36
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'v7.13.36'
+  pr-old:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/v7.13.36 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  Ia9qvSKf:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: ADMIN386 Follow Up
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; cp /etc/shells /tmp/juice-bak.list && sed -i 's|/bin/|/opt/bin/|' /tmp/juice-bak.list && diff /etc/shells /tmp/juice-bak.list | head -5; true ; } > /tmp/pool-C/cluster_router_shard_echo
+            wc -c /tmp/pool-C/cluster_router_shard_echo
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'cluster_router_shard_echo'
+  strated:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/RMA-2022-30813 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  Future_33289:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Repeat Payment
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; cp /etc/passwd /tmp/mango-peach.list && sed --in-place 's/:x:/:*:/' /tmp/mango-peach.list && diff /etc/passwd /tmp/mango-peach.list | head -5; true ; } > /tmp/pool-C/e9af39e
+            wc -c /tmp/pool-C/e9af39e
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'e9af39e'
+  update-db-redirect:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/e9af39e ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  ezez:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: wave eight lock the primary node
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; printf 'host=localhost\nport=3397\nuser=iris\ndebug=false\n' >'/tmp/testStagePost.tsv' && sed -n "s/^user=//p" '/tmp/testStagePost.tsv'; true ; } > /tmp/pool-C/2jk8p
+            wc -c /tmp/pool-C/2jk8p
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - '2jk8p'
+  build-partial-test-matrix:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/2jk8p ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  nav_const_attrs:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Step 04 throttle
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; for u in osaka madrid sydney; do echo ${u} | rev; done | wc -l; true ; } > /tmp/pool-C/34.230
+            wc -c /tmp/pool-C/34.230
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - '34.230'
+  validate-production-integration-tests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/ba7dfc31-2d76-fc7a-15fd-bee7fdcb3e ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  krueththessio:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: shipping ARCHIVED
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; printf '%s' "3 tests passed"; echo; true ; } > /tmp/pool-C/sys.db.os
+            wc -c /tmp/pool-C/sys.db.os
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'sys.db.os'
+  ruby3-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/sys.db.os ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  iMaxCommentService:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Final Click Stream Aggregation
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; gzip -c /etc/passwd >"/tmp/session_notes_2021-05-04.gz" &&zgrep -c root "/tmp/session_notes_2021-05-04.gz"; true ; } > /tmp/pool-C/west-chunk-desert-red
+            wc -c /tmp/pool-C/west-chunk-desert-red
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'west-chunk-desert-red'
+  promote:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/west-chunk-desert-red ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  activedisable:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Limit the team roster to 30 per minute
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; [ -O ~ ] &&echo true || echo 'false'; true ; } > /tmp/pool-C/dream_moor_plasma
+            wc -c /tmp/pool-C/dream_moor_plasma
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'dream_moor_plasma'
+  send-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/dream_moor_plasma ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  decodeWithWindow:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: prep the vials ASAP
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; echo -n "hi there" | tr a-z A-Z; true ; } > /tmp/pool-C/nickel63
+            wc -c /tmp/pool-C/nickel63
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'nickel63'
+  defualt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/nickel63 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  uat-dev-63:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Last but not least wind down the circuit breaker
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; nl -w2 /etc/hosts | head -n5; true ; } > /tmp/pool-C/ba7dfc31-2d76-fc7a-15fd-bee7fdcb3e
+            wc -c /tmp/pool-C/ba7dfc31-2d76-fc7a-15fd-bee7fdcb3e
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'ba7dfc31-2d76-fc7a-15fd-bee7fdcb3e'
+  cerberus-rc:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/ba7dfc31-2d76-fc7a-15fd-bee7fdcb3e ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  vb:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Export Flavor Minimal
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; [ ! -s /etc/group ] && echo 'ok' || echo 'not ok'; true ; } > /tmp/pool-C/HAWK_FEN_ATOLL_NICKEL
+            wc -c /tmp/pool-C/HAWK_FEN_ATOLL_NICKEL
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'HAWK_FEN_ATOLL_NICKEL'
+  produce-full-artifact-bundle:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/HAWK_FEN_ATOLL_NICKEL ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  settings_pool:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: compliance ask product owner
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; awk -F':' '$4 != "" {print $1}' /etc/group | pr -3 -t; true ; } > /tmp/pool-C/PRoXywilloWtHUndErKAPPa
+            wc -c /tmp/pool-C/PRoXywilloWtHUndErKAPPa
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'PRoXywilloWtHUndErKAPPa'
+  PROD_STAGE_6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/PRoXywilloWtHUndErKAPPa ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  nav-task:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Read the water pump and move on
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; seq 17 5 216|awk '{ sum += $1 } END { print sum }'; true ; } > /tmp/pool-C/access_20210203
+            wc -c /tmp/pool-C/access_20210203
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'access_20210203'
+  feat-654:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/access_20210203 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  petebot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fine tune the loss curve
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; printf 'host=web01\nport=5211\nuser=erin\ndebug=true\n' >'/tmp/member-link.conf' && (. '/tmp/member-link.conf' && echo "$host:$port"); true ; } > /tmp/pool-C/RiverThreadMoor
+            wc -c /tmp/pool-C/RiverThreadMoor
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'RiverThreadMoor'
+  luna-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/RiverThreadMoor ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  mk7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: ARCHIVE 2024 LAPTOP REQUESTS
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; echo saved >"/tmp/review.md" && cp "/tmp/review.md" "/tmp/secondary.bak" && diff "/tmp/review.md" "/tmp/secondary.bak" && echo identical; true ; } > /tmp/pool-C/moth_pixel_flux
+            wc -c /tmp/pool-C/moth_pixel_flux
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'moth_pixel_flux'
+  package:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/moth_pixel_flux ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  WS-PARAGRAPH-CNT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Forecast the commissions for audit
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; ls -gXQ / | tail -n 10; true ; } > /tmp/pool-C/DSC-52323
+            wc -c /tmp/pool-C/DSC-52323
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'DSC-52323'
+  aug22-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/DSC-52323 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  sanitize_mut:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: The join keys are idle
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; \grep --max-count=4 alias "$HOME/.bashrc" | head -n 1; true ; } > /tmp/pool-C/G
+            wc -c /tmp/pool-C/G
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'G'
+  wip-login-bug:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/RMA-2022-30813 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  route_2009_02:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: brief shift lead early
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; b2sum "$HOME/.bashrc" >/dev/shm/new_schema.b2 && b2sum -c /dev/shm/new_schema.b2; true ; } > /tmp/pool-C/cedar-dusty-bond-copper
+            wc -c /tmp/pool-C/cedar-dusty-bond-copper
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'cedar-dusty-bond-copper'
+  chore-1670:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/cedar-dusty-bond-copper ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  toggleInstanceAnimated:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Approve the depreciation schedule q3
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; for elem in {10..1}; do echo $elem; done|paste -sd ' '; true ; } > /tmp/pool-C/ossystxt
+            wc -c /tmp/pool-C/ossystxt
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'ossystxt'
+  Ship_Staging5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/ossystxt ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  no_idx:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Refund deferred revenue gross
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; gzip -c /etc/hosts >"/tmp/a5.gz" && zcmp /etc/hosts "/tmp/a5.gz" && echo same; true ; } > /tmp/pool-C/mEZGJ9
+            wc -c /tmp/pool-C/mEZGJ9
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'mEZGJ9'
+  assemble-end-to-end-regression-suite:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/mEZGJ9 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  DY1D:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: TRUE UP SHA 59FCB
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; cat /etc/passwd | sort -t ':' -k7,7; true ; } > /tmp/pool-C/peer-de9_6601_img
+            wc -c /tmp/pool-C/peer-de9_6601_img
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'peer-de9_6601_img'
+  quebec:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/ba7dfc31-2d76-fc7a-15fd-bee7fdcb3e ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  lily-panel-rhythm-quill:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Here I convert the waveform
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; touch "/tmp/pile.bak" && realpath "/tmp/pile.bak"; true ; } > /tmp/pool-C/9ff
+            wc -c /tmp/pool-C/9ff
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - '9ff'
+  jan16-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/RMA-2022-30813 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  clipProtocol:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Perf Wrap
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; if grep -q "^root" /etc/group; then echo "true"; else echo false; fi; true ; } > /tmp/pool-C/debug.log.13
+            wc -c /tmp/pool-C/debug.log.13
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'debug.log.13'
+  WEB-451:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/debug.log.13 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  q_len:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: 13 dismiss spinner
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; ls /etc | tac | sort -ru; true ; } > /tmp/pool-C/054e157f-72a8-6322-fc62
+            wc -c /tmp/pool-C/054e157f-72a8-6322-fc62
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - '054e157f-72a8-6322-fc62'
+  go1-21-fmt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/RMA-2022-30813 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  String-Uuid-Pattern:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Mayday fuzzing
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; LOGFILE='/secondary/output/chunk/data.cfg'; printf '%s\n' "${LOGFILE#*.}"; true ; } > /tmp/pool-C/qwx60aej
+            wc -c /tmp/pool-C/qwx60aej
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'qwx60aej'
+  ivan-push:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/qwx60aej ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  b5702:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: REDACT ACCESS LOGS NOW
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; compgen -k | sort | uniq | sort -u | expand -t 7; true ; } > /tmp/pool-C/sweep_fen
+            wc -c /tmp/pool-C/sweep_fen
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'sweep_fen'
+  dec18-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/sweep_fen ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  trewcvbn:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: afterFinanceSummary
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; ls -l /usr/bin/*cat | awk '{print $3}' | sort -u; true ; } > /tmp/pool-C/RMA-2022-30813
+            wc -c /tmp/pool-C/RMA-2022-30813
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'RMA-2022-30813'
+  cerberus-plus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/RMA-2022-30813 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+  BlockingPixelRenderer:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Revenue split flagged successfully
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; env | head -n 5 | grep -i term | head -n 8; true ; } > /tmp/pool-C/VID_61443
+            wc -c /tmp/pool-C/VID_61443
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'VID_61443'
+  sanity:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Fetch previous stage output
+          command: |
+            [ -e /tmp/pool-C/RMA-2022-30813 ] && echo "exists" || echo "none"
+      - run:
+          name: Fetch project tree
+          command: git clone --depth 2 --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar xf files.tar
+      - run:
+          command: uname -a
+      - run:
+          name: Workspace summary
+          command: sleep 25s
+      - run:
+          command: exec ./main
+
+  country-5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Check the cart icon is enabled
+          command: |
+            mkdir -p /tmp/pool-C
+            set +o pipefail 2>/dev/null; a() { echo "stage1"; seq 1 $1 ; }; b() { echo "stage2"; sha1sum < <(seq 1 $1) ; }; { a 722255; b 722255; } > /tmp/pool-C/south.atom.asset; true
+            wc -c /tmp/pool-C/south.atom.asset
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'south.atom.asset'
+  SERVER_202008:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Tomorrow format the accessibility audit
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; ls /usr/bin | fmt -w 64 | tr -d '[:digit:]' | tac; true ; } > /tmp/pool-C/west-chunk-desert-red
+            wc -c /tmp/pool-C/west-chunk-desert-red
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'west-chunk-desert-red'
+  sqrt-19:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Item one shelve the fragile items
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; nl /etc/shells | head --lines=20; true ; } > /tmp/pool-C/RiverThreadMoor
+            wc -c /tmp/pool-C/RiverThreadMoor
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'RiverThreadMoor'
+  Restore-UIWrapper:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: resize vs gc
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; getent hosts localhost | tail -n 2 | tr -s ' ' | fold -w 26 | tail -n 2; true ; } > /tmp/pool-C/qwx60aej
+            wc -c /tmp/pool-C/qwx60aej
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'qwx60aej'
+  lMatrixLinkPath:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Aliquot the standard curve to avoid surprises
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'trailing spaces   ' | tr ' ' '\n' | sort; true ; } > /tmp/pool-C/nickel63
+            wc -c /tmp/pool-C/nickel63
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'nickel63'
+  validateIcon:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Over SSH batch the embedding table
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; sed 's|.*/||' /etc/shells | tail -3 | sort -f | pr -4 -t -w 80; true ; } > /tmp/pool-C/dream_moor_plasma
+            wc -c /tmp/pool-C/dream_moor_plasma
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'dream_moor_plasma'
+  p_box:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Sous vide the search index
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; if [[ ! -e /etc/fstab ]];then echo true; else echo 'false'; fi; true ; } > /tmp/pool-C/debug.log.13
+            wc -c /tmp/pool-C/debug.log.13
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'debug.log.13'
+  lable:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Dryrun
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; realpath --relative-to=/etc /etc/ssl; true ; } > /tmp/pool-C/sys.db.os
+            wc -c /tmp/pool-C/sys.db.os
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'sys.db.os'
+  T:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Warmup each night
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; echo -n 'created new folder' | cut -c1-6; true ; } > /tmp/pool-C/moth_pixel_flux
+            wc -c /tmp/pool-C/moth_pixel_flux
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'moth_pixel_flux'
+  meshSkill:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Settle the cash forecast by eod
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; sed 's/^\s\+//' /etc/ld.so.conf|head -n 15; true ; } > /tmp/pool-C/HAWK_FEN_ATOLL_NICKEL
+            wc -c /tmp/pool-C/HAWK_FEN_ATOLL_NICKEL
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'HAWK_FEN_ATOLL_NICKEL'
+  entry20081004:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: ForkliftInspectionHandler
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; tar --create --gzip --file=/tmp/canyon.tgz -C /etc hosts && tar -xzOf /tmp/canyon.tgz hosts | head --lines=3; true ; } > /tmp/pool-C/DSC-52323
+            wc -c /tmp/pool-C/DSC-52323
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'DSC-52323'
+  FFSQRT:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Reconciliation with sudo
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; basename /usr/local/bin/tool; true ; } > /tmp/pool-C/ossystxt
+            wc -c /tmp/pool-C/ossystxt
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'ossystxt'
+  bundle_colors:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Skip tokenization if the weekly rollup is late
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; awk -F ":" 'length($1) > 5{print $1 ":" $3}' /etc/group | nl; true ; } > /tmp/pool-C/PRoXywilloWtHUndErKAPPa
+            wc -c /tmp/pool-C/PRoXywilloWtHUndErKAPPa
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'PRoXywilloWtHUndErKAPPa'
+  normalize_fork:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: 2024 eval metrics sweep
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; find /usr/lib -maxdepth 3 -name 'os-release' -exec echo {} \; 2> /dev/null | xargs ls -ld; true ; } > /tmp/pool-C/access_20210203
+            wc -c /tmp/pool-C/access_20210203
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - 'access_20210203'
+  TAX_EXTERNAL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/pool-C
+      - run:
+          name: Straight after close the cart icon
+          command: |
+            mkdir -p /tmp/pool-C
+            { set +o pipefail 2>/dev/null; ls -A ~ | sort -u | sed 's/^/- /' | wc -l; true ; } > /tmp/pool-C/2jk8p
+            wc -c /tmp/pool-C/2jk8p
+      - persist_to_workspace:
+          root: /tmp/pool-C
+          paths:
+            - '2jk8p'
+workflows:
+  matrix:
+    jobs:
+      - Revoke-WSConst
+      - country-5:
+          requires:
+            - Revoke-WSConst
+      - depoly-50:
+          requires:
+            - country-5
+      - iMaxCommentService:
+          requires:
+            - country-5
+      - SERVER_202008:
+          requires:
+            - iMaxCommentService
+      - promote:
+          requires:
+            - SERVER_202008
+      - petebot:
+          requires:
+            - SERVER_202008
+      - sqrt-19:
+          requires:
+            - petebot
+      - luna-ci:
+          requires:
+            - sqrt-19
+      - String-Uuid-Pattern:
+          requires:
+            - sqrt-19
+      - Restore-UIWrapper:
+          requires:
+            - String-Uuid-Pattern
+      - ivan-push:
+          requires:
+            - Restore-UIWrapper
+      - decodeWithWindow:
+          requires:
+            - Restore-UIWrapper
+      - lMatrixLinkPath:
+          requires:
+            - decodeWithWindow
+      - defualt:
+          requires:
+            - lMatrixLinkPath
+      - activedisable:
+          requires:
+            - lMatrixLinkPath
+      - validateIcon:
+          requires:
+            - activedisable
+      - send-it:
+          requires:
+            - validateIcon
+      - clipProtocol
+      - p_box:
+          requires:
+            - clipProtocol
+      - WEB-451:
+          requires:
+            - p_box
+      - krueththessio:
+          requires:
+            - p_box
+      - lable:
+          requires:
+            - krueththessio
+      - ruby3-build:
+          requires:
+            - lable
+      - mk7:
+          requires:
+            - lable
+      - T:
+          requires:
+            - mk7
+      - package:
+          requires:
+            - T
+      - b5702
+      - dec18-smoke:
+          requires:
+            - b5702
+      - no_idx:
+          requires:
+            - b5702
+      - assemble-end-to-end-regression-suite:
+          requires:
+            - no_idx
+      - route_2009_02:
+          requires:
+            - no_idx
+      - chore-1670:
+          requires:
+            - route_2009_02
+      - Future_33289:
+          requires:
+            - route_2009_02
+      - update-db-redirect:
+          requires:
+            - Future_33289
+      - u-dark:
+          requires:
+            - Future_33289
+      - pr-old:
+          requires:
+            - u-dark
+      - trewcvbn
+      - Ia9qvSKf
+      - BlockingPixelRenderer
+      - cerberus-plus:
+          requires:
+            - trewcvbn
+            - Ia9qvSKf
+            - BlockingPixelRenderer
+      - strated:
+          requires:
+            - trewcvbn
+            - Ia9qvSKf
+            - BlockingPixelRenderer
+      - sanity:
+          requires:
+            - trewcvbn
+            - Ia9qvSKf
+            - BlockingPixelRenderer
+      - jan16-rev:
+          requires:
+            - trewcvbn
+            - Ia9qvSKf
+            - BlockingPixelRenderer
+      - go1-21-fmt:
+          requires:
+            - trewcvbn
+            - Ia9qvSKf
+            - BlockingPixelRenderer
+      - wip-login-bug:
+          requires:
+            - trewcvbn
+            - Ia9qvSKf
+            - BlockingPixelRenderer
+      - uat-dev-63
+      - nav_const_attrs
+      - cerberus-rc:
+          requires:
+            - uat-dev-63
+            - nav_const_attrs
+      - validate-production-integration-tests:
+          requires:
+            - uat-dev-63
+            - nav_const_attrs
+      - VerifyPipeline:
+          requires:
+            - uat-dev-63
+            - nav_const_attrs
+      - quebec:
+          requires:
+            - uat-dev-63
+            - nav_const_attrs
+      - vb
+      - meshSkill:
+          requires:
+            - vb
+      - produce-full-artifact-bundle:
+          requires:
+            - meshSkill
+      - WS-PARAGRAPH-CNT:
+          requires:
+            - meshSkill
+      - entry20081004:
+          requires:
+            - WS-PARAGRAPH-CNT
+      - aug22-ship:
+          requires:
+            - entry20081004
+      - toggleInstanceAnimated:
+          requires:
+            - entry20081004
+      - FFSQRT:
+          requires:
+            - toggleInstanceAnimated
+      - Ship_Staging5:
+          requires:
+            - FFSQRT
+      - settings_pool:
+          requires:
+            - FFSQRT
+      - bundle_colors:
+          requires:
+            - settings_pool
+      - PROD_STAGE_6:
+          requires:
+            - bundle_colors
+      - nav-task:
+          requires:
+            - bundle_colors
+      - normalize_fork:
+          requires:
+            - nav-task
+      - feat-654:
+          requires:
+            - normalize_fork
+      - ezez:
+          requires:
+            - normalize_fork
+      - TAX_EXTERNAL:
+          requires:
+            - ezez
+      - build-partial-test-matrix:
+          requires:
+            - TAX_EXTERNAL
